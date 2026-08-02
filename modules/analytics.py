@@ -1,8 +1,9 @@
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
+import streamlit as st
 
-
+@st.cache_data
 def calculate_cpk(data_series, usl, lsl):
     """
     Tính toán các chỉ số thống kê cơ bản và năng lực quy trình (Cp, CpK).
@@ -55,7 +56,7 @@ def calculate_cpk(data_series, usl, lsl):
         "status": status
     }
 
-
+@st.cache_data
 def create_spc_control_chart(df, val_col, time_col=None, usl=None, lsl=None, sigma_level=3):
     """
     Vẽ biểu đồ kiểm soát SPC (Control Chart) với đường Mean, UCL, LCL, USL, LSL.

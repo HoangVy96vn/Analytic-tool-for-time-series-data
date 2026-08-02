@@ -3,8 +3,10 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 import plotly.graph_objects as go
+import streamlit as st
 
 
+@st.cache_data(ttl=3600)
 def train_linear_regression(df, feature_cols, target_col):
     """
     Huấn luyện mô hình Linear Regression dựa trên các thuộc tính chọn lọc.
@@ -38,7 +40,6 @@ def train_linear_regression(df, feature_cols, target_col):
     results_df["Residual"] = y - y_pred
 
     return model, metrics, results_df
-
 
 def evaluate_new_data(model, new_df, feature_cols, target_col=None):
     """

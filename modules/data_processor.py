@@ -1,7 +1,8 @@
 import pandas as pd
 import numpy as np
+import streamlit as st
 
-
+@st.cache_data(ttl=3600)  # Lưu cache trong 1 giờ
 def load_data(uploaded_file) -> pd.DataFrame:
     """Đọc file CSV hoặc Excel tải lên từ Streamlit."""
     if uploaded_file.name.endswith('.csv'):
